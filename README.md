@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🦁 هزارتوی شیر و خورشید
+# 🦁☀️ هزارتوی شیر و خورشید
 ### Lion & Sun Maze — Browser & Telegram Mini App Edition
 
 [![HTML5 Canvas](https://img.shields.io/badge/Tech-HTML5%20Canvas%20%2F%20JS-orange?style=for-the-badge&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
