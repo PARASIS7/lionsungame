@@ -1,0 +1,13 @@
+{
+  "name": "lion-sun-canvas",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check game.js",
+    "verify": "node verify.cjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.61.1",
+    "playwright-core": "^1.61.1"
+  }
+}

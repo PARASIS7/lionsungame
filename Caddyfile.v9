@@ -1,0 +1,54 @@
+{
+    email rpac1200@gmail.com
+    acme_ca https://acme.zerossl.com/v2/DV90
+}
+
+{$DOMAIN} {
+    root * /srv
+    encode zstd gzip
+
+    # Serve the large Pygbag runtime files locally. Keep the upstream only as
+    # a fallback for small optional files not mirrored on this deployment.
+    @runtime_static {
+        path /runtime/*
+        file
+    }
+    handle @runtime_static {
+        header Cache-Control "public, max-age=31536000, immutable"
+        file_server {
+            precompressed gzip
+        }
+    }
+
+    handle_path /runtime/* {
+        reverse_proxy https://pygame-web.github.io {
+            header_up Host pygame-web.github.io
+        }
+    }
+
+    # The WebAssembly loader fetches this bundle internally. Explicit inline
+    # headers keep desktop download managers from treating it as a user file.
+    @game_bundle path /game.bundle
+    header @game_bundle {
+        Content-Type application/octet-stream
+        Content-Disposition "inline"
+        Cache-Control "public, max-age=31536000, immutable"
+    }
+
+    # Telegram WebViews can otherwise keep an old index after a deployment.
+    # Versioned JS/CSS/assets remain cacheable, while the HTML entry point is
+    # always revalidated so clients receive the newest version references.
+    @html_entry path / /index.html
+    header @html_entry {
+        Cache-Control "no-cache, no-store, must-revalidate"
+        Pragma "no-cache"
+        Expires "0"
+    }
+
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy strict-origin-when-cross-origin
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    }
+    file_server
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090c0f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>هزارتوی شیر و خورشید</title>
+  <link rel="icon" href="data:,">
+  <link rel="preload" href="assets/lion-sprites.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/lion-walk-v2.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/clerics-sheet.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/clerics-frightened-v2.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/persepolis-ui-skin-v2.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="styles.css?v=15">
+</head>
+<body>
+  <main id="game-shell" aria-label="هزارتوی شیر و خورشید">
+    <canvas id="game" width="720" height="1280" tabindex="0" aria-label="بازی هزارتوی شیر و خورشید"></canvas>
+
+    <section id="memorial-intro" class="screen poster" hidden aria-label="یادبود جاویدنامان">
+      <picture class="poster-art" aria-hidden="true">
+        <img id="memorial-poster-image" src="assets/memorial-intro-mobile-v12.webp" width="1080" height="1920" fetchpriority="high" alt="">
+      </picture>
+      <article class="memorial-copy">
+        <p class="eyebrow">پیش‌کش به فرزندان جاوید ایران</p>
+        <h1>به یاد <span class="blood-text">جاویدنامان</span> ایران</h1>
+        <div class="divider" aria-hidden="true"></div>
+        <p class="body-copy">
+          این بازی، پیش‌کشی است به یاد <span class="blood-text">جاویدنامان</span> سال‌های <span class="blood-text">۱۴۰۱</span> و <span class="blood-text">۱۴۰۴</span>.<br>
+          آنان رفتند، اما ایستادگی‌شان در ما ریشه دوانده است. جان‌های پاکی که فدا شدند، بذر بودند، نه پایان؛ خون پاکشان در رگ‌های این خاک جاری‌ست تا روزی که این سرزمین به بار بنشیند.
+          <span class="dawn">پایان شب سیه، سپید است.</span>
+        </p>
+        <p class="salute">پاینده ایران، جاوید شاه ✌🏻</p>
+      </article>
+      <p id="memorial-hint" class="memorial-hint" hidden aria-live="polite">برای شروع بازی کلیک کنید</p>
+      <button id="memorial-continue" class="screen-hit" type="button" aria-label="ادامه به صفحه شروع بازی"></button>
+    </section>
+
+    <section id="start-screen" class="screen enter" hidden aria-label="شروع بازی">
+      <div class="gate-card">
+        <h1>هزارتوی شیر و خورشید</h1>
+        <p class="mission">خورشیدها را گرد آور و راه ایران را باز کن</p>
+        <fieldset class="difficulty" aria-label="درجه سختی">
+          <legend>درجه سختی</legend>
+          <div class="difficulty-options">
+            <button type="button" data-difficulty="easy">آسان</button>
+            <button type="button" data-difficulty="normal" class="selected" aria-pressed="true">معمولی</button>
+            <button type="button" data-difficulty="hard">سخت</button>
+          </div>
+        </fieldset>
+        <button id="start-game" class="enter-action" type="button">شروع بازی</button>
+      </div>
+    </section>
+
+    <div id="loading" role="status" aria-live="polite">
+      <div class="loading-vignette" aria-hidden="true"></div>
+      <section class="loading-tablet">
+        <div class="loading-mark" aria-hidden="true">
+          <span class="sun-core"></span><span class="sun-ray ray-a"></span><span class="sun-ray ray-b"></span><span class="sun-ray ray-c"></span><span class="sun-ray ray-d"></span>
+        </div>
+        <p class="loading-kicker">هزارتوی شیر و خورشید</p>
+        <h1>دروازه‌های ایران</h1>
+        <p id="loading-status" class="loading-status">آماده‌سازی میدان نبرد…</p>
+        <div class="loading-line" aria-hidden="true"><i id="loading-progress"></i></div>
+        <p id="loading-percent" class="loading-percent">۰٪</p>
+        <button id="loading-retry" type="button" hidden>تلاش دوباره</button>
+      </section>
+    </div>
+  </main>
+  <script src="assets/memorials-data.js?v=15"></script>
+  <script src="game.js?v=15" defer></script>
+</body>
+</html>
