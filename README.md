@@ -1,24 +1,108 @@
-# Lion & Sun Maze — Canvas edition
+<div align="center">
 
-This directory is the browser-native port of the existing Pygame game. It uses
-plain HTML5 Canvas and JavaScript, keeps the original sprite sheets and game
-rules, and does not download a Python or WebAssembly runtime. The interface uses
-the Persepolis stone-relief direction and adapts independently to portrait
-mobile screens and landscape desktop displays.
+# 🦁 هزارتوی شیر و خورشید
+### Lion & Sun Maze — Browser & Telegram Mini App Edition
 
-The game can be served as static files or opened directly through `index.html`.
-The memorial list loads in the background and can no longer hold the game on an
-infinite loading screen. The stone-gate loader reports real progress and offers
-a retry action if a required image is unavailable.
+[![HTML5 Canvas](https://img.shields.io/badge/Tech-HTML5%20Canvas%20%2F%20JS-orange?style=for-the-badge&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
+[![Telegram Mini App](https://img.shields.io/badge/Platform-Telegram%20Mini%20App-blue?style=for-the-badge&logo=telegram)](https://core.telegram.org/bots/webapps)
+[![Persepolis Theme](https://img.shields.io/badge/Skin-Persepolis%20Stone%20Relief-amber?style=for-the-badge)](https://github.com/PARASIS7/lionsungame)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
-The approved `persepolis-ui-skin-v1` artwork is the only portrait/mobile skin;
-landscape displays use the matching desktop composition.
+*پیش‌کشی به یاد جاویدنامان سرافراز ایران (سال‌های ۱۴۰۱ و ۱۴۰۴)*
 
-Controls: arrow keys/WASD or swipe. Enter/tap starts and continues; P pauses;
-M toggles sound. The original ambient loop and game effects are synthesized
-with Web Audio after the first user interaction, so no large audio download is
-required.
+</div>
 
-Memorial entries support structured `name`, `age`, `deathDay`, and `city`
-fields. Legacy string entries remain compatible; missing dates are shown as
-`تاریخ نامشخص` rather than guessed.
+---
+
+## 📖 درباره بازی
+
+**هزارتوی شیر و خورشید** نسخه بومی و مدرن مرورگر (HTML5 Canvas و JavaScript خالص) از بازی کلاسیک هزارتو است که با الهام از معماری و هنرمندی باستانی تخت جمشید و نقش‌برجسته‌های سنگی طراحی شده است. این بازی بدون نیاز به هیچ‌گونه مربی پایتون (Pygame) یا ماشین‌های مجازی سنگین (WebAssembly)، به‌صورت کاملاً روان، سبک و سریع روی مرورگرهای دسکتاپ و موبایل و همچنین به عنوان **مینی‌اپ تلگرام** اجرا می‌شود.
+
+> *"پایان شب سیه، سپید است."*
+
+---
+
+## 🏛️ یادبود جاویدنامان ایران
+
+این اثر پیش‌کشی است به یاد فرزندان دلیر و جاویدنام ایران در سال‌های **۱۴۰۱** و **۱۴۰۴**. آنان رفتند، اما ایستادگی‌شان در ریشه‌های این خاک و در یاد ما جاودانه است. بخش یادبود بازی با اطلاعات ساختاریافته (نام، سن، تاریخ پرواز و شهر) به پاسداشت نام و خاطره این عزیزان اختصاص یافته است.
+
+---
+
+## ✨ ویژگی‌های کلیدی پروژه
+
+* **رندریگ بومی با Canvas**: رندرینگ فوق‌العاده سریع با پالت رنگی الهام‌گرفته از سنگ‌نگاره‌های تخت جمشید (`basalt`, `sandstone`, `bronze`, `turquoise`).
+* **سازگاری کامل با موبایل و دسکتاپ**: انطباق هوشمند رابط کاربری برای نمایشگرهای عمودی گوشی‌های هوشمند (موبایل پرتره) و دسکتاپ لنداسکیپ.
+* **مینی‌اپ تلگرام (Telegram Mini App)**: دارای اسکریپت ربات پایتون (`bot.v10.py`) جهت راه‌اندازی سریع دکمه‌های منو و راه‌انداز بازی در ربات‌های تلگرامی.
+* **تولید صوتی پویا (Web Audio API)**: بدون نیاز به دانلود فایل‌های صوتی حجیم؛ افکت‌های صوتی و لوپ‌های محیطی به‌صورت پویا در مرورگر سنتز می‌شوند.
+* **۵ مرحله تاریخی متنوع**:
+  1. **کاخ کاشی** (Kashi Palace)
+  2. **هزارتوی مسین** (Copper Labyrinth)
+  3. **دژ سرخ** (Crimson Citadel)
+  4. **واحه یاقوتی** (Sapphire Oasis)
+  5. **امپراتوری زرین** (Golden Empire)
+
+---
+
+## 🎮 کنترل‌های بازی
+
+| پلتفرم / روش | حرکت | عملیات (شروع / ادامه) | مکث / صدا |
+| :--- | :--- | :--- | :--- |
+| **دسکتاپ** | کلیدهای جهت‌نما (Arrow Keys) یا `WASD` | کلید `Enter` یا کلیک | `P` (مکث) / `M` (صدا) |
+| **موبایل** | سوایپ (Swipe) در صفحات لمسی | ضربه (Tap) روی صفحه | دکمه‌های درون‌برنامه |
+
+---
+
+## ⚙️ درجات سختی بازی
+
+* **آسان (Easy)**: ۵ جان، سرعت بیشتر بازیکن، ارواح کندتر، مدت‌زمان قدرت بیشتر (۱۱ ثانیه).
+* **معمولی (Normal)**: ۳ جان، سرعت استاندارد و متعادل.
+* **سخت (Hard)**: ۲ جان، چالش واقعی با سرعت بالای ارواح و مدت‌زمان کمتر قدرت.
+
+---
+
+## 🚀 نحوه اجرا و توسعه محلی (Quick Start)
+
+این پروژه به صورت فایل‌های استاتیک خالص طراحی شده و نیازی به فرآیندهای پیچیده ساخت (Build) ندارد.
+
+1. کلون کردن مخزن:
+   ```bash
+   git clone https://github.com/PARASIS7/lionsungame.git
+   cd lionsungame
+   ```
+
+2. اجرای سرور محلی (مثلاً با Python یا Node.js یا Caddy):
+   ```bash
+   python3 -m http.server 8080
+   ```
+   سپس آدرس `http://localhost:8080` را در مرورگر خود باز کنید.
+
+3. راه‌اندازی ربات تلگرام (اختیاری):
+   جهت راه‌اندازی ربات تلگرامی مرتبط با مینی‌اپ:
+   ```bash
+   export BOT_TOKEN="your_telegram_bot_token"
+   export MINI_APP_URL="https://your-domain.com"
+   python3 bot.v10.py
+   ```
+
+---
+
+## 📂 ساختار پروژه
+
+```tree
+├── index.html              # صفحه اصلی و ساختار HTML بازی
+├── game.js                 # هسته منطق بازی، فیزیک، و رندرینگ Canvas
+├── styles.css              # استایل‌های گرافیکی با تم تخت جمشید
+├── bot.v10.py              # ربات مینی‌اپ تلگرام (پایتون)
+├── assets/                 # تصاویر، اسپرایت‌شیت‌ها و داده‌های یادبود
+└── package.json            # تنظیمات پروژه و ابزارهای بررسی کد
+```
+
+---
+
+## 📄 مجوز (License)
+
+این پروژه به صورت متن‌باز منتشر شده است. برای جزئیات بیشتر به فایل [LICENSE](LICENSE) مراجعه کنید.
+
+<div align="center">
+  <p><b>پاینده ایران ✌🏻</b></p>
+</div>
